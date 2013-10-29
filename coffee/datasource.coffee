@@ -112,17 +112,7 @@ class @DataSource
     # Notify anyone interested in the data
     listener(data) for listener in @dataListeners
 
-    # Schedule the next work session
-    requestAnimationFrame @doWork
-
-  onData: (handler) ->
-    # If the first listener has arrived, we should probably start working
-    shouldStartWorking = (@dataListeners ||= []).length is 0
-
-    # Add this listener
-    @dataListeners.push handler
-
-    @doWork() if shouldStartWorking
+  onData: (handler) -> (@dataListeners ||= []).push handler
 
 class @BoringDataSource extends @DataSource
   createSoundSource: (callback) ->

@@ -28,3 +28,9 @@ dataSource.onData (data) ->
 
   # Reattach the visualizer element
   visualizerElementParent.appendChild visualizerElement
+
+# Make the data source work every frame
+workIt = ->
+  dataSource.doWork()
+  setTimeout workIt, 0
+workIt()
