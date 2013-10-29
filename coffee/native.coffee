@@ -23,7 +23,7 @@ dataSource.onData (data) ->
     gridPointElement = gridPointElementMother.cloneNode()
 
     # Set its brightness
-    gridPointElement.style.backgroundColor = "rgb(0,#{Math.round dataPoint.brightness * 255},0)"
+    gridPointElement.style.backgroundColor = "rgba(0, 255, 0, #{dataPoint.brightness})"
 
     # Append this grid point to the visualizer
     visualizerElement.appendChild gridPointElement

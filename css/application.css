@@ -7,7 +7,7 @@ html, body, #visualizer {
   height: 100%;
 }
 body {
-  background-color: #444;
+  background-color: rgba(0, 0, 0, 0.9);
 }
 #visualizer div {
   width: calc(1/64 * 100%);
@@ -17,10 +17,6 @@ body {
   height: -webkit-calc(1/64 * 100%);
 
   float: left;
-
-  padding: 0 1px 1px 0;
-  box-sizing: border-box;
-  background-clip: content-box;
 }
 #visualizer div:nth-child(64n + 1) {
   clear: left;
