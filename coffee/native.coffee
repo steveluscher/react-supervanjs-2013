@@ -10,6 +10,8 @@ dataSource = new FunDataSource
 
 # Attach a handler to that data source, to be called whenever new data is available
 dataSource.onData (data) ->
+  Perf.time 'redrawing DOM'
+
   # Remove the visualizer from the DOM to prevent reflows
   visualizerElementParent.removeChild(visualizerElement)
 
@@ -28,6 +30,8 @@ dataSource.onData (data) ->
 
   # Reattach the visualizer element
   visualizerElementParent.appendChild visualizerElement
+
+  Perf.timeEnd 'redrawing DOM'
 
 # Make the data source work every frame
 workIt = ->

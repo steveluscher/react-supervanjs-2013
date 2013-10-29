@@ -107,10 +107,18 @@ class @DataSource
 
   doWork: =>
     # Produce the data
+    Perf.time 'producing data' if PROFILE
     data = produceData.call(this)
+    Perf.timeEnd 'producing data' if PROFILE
 
     # Notify anyone interested in the data
     listener(data) for listener in @dataListeners
+
+  if PROFILE
+     # Force a redraw. Time it.
+      Perf.time 'redrawing'
+      document.body.offsetHeight
+      Perf.timeEnd 'redrawing'
 
   onData: (handler) -> (@dataListeners ||= []).push handler
 
