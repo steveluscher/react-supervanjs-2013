@@ -102,26 +102,15 @@ class @DataSource
         # Connect the sound source to the analyser
         source.connect(@analyser)
 
-    # If we're profiling, keep track of how many work packages have been completed
-    @workPackages = 0 if PROFILE
-
     # Keep a cache of reusable view models to cut down on object construction
     @viewModels = []
 
   doWork: =>
-    @workPackages++ if PROFILE
-
-    # If this is the 1st work package, start profiling
-    console.profile('work') if PROFILE and @workPackages is 1
-
     # Produce the data
     data = produceData.call(this)
 
     # Notify anyone interested in the data
     listener(data) for listener in @dataListeners
-
-    # If this is the 100th work package, stop profiling
-    console.profileEnd('work') if PROFILE and @workPackages is 100
 
     # Schedule the next work session
     requestAnimationFrame @doWork
