@@ -1,5 +1,5 @@
 # Profile the first 100 frames?
-PROFILE = no
+window.PROFILE = yes
 
 # Minimal polyfill for AudioContext
 window.AudioContext ||= window.webkitAudioContext or
