@@ -159,7 +159,7 @@ class @FunDataSource extends @DataSource
       compressor.ratio.value = 20
       compressor.attack.value = 0
       compressor.release.value = 0
-      gainNode.gain.value = 4
+      gainNode.gain.value = 2
 
       # Connect the sound source to the compressor
       mediaStreamSource.connect(compressor)
