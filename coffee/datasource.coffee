@@ -62,7 +62,6 @@ class @DataSource
       amplitude / 255
 
     # Synthesize view models from this data, creating a 2D grid of size SAMPLES_PER_DATA_POINT × SAMPLES_PER_DATA_POINT
-    viewModels = []
     for col in DATA_POINT_INDICES
       # Which data point does this column represent?
       dataPoint = data[col]
@@ -72,12 +71,13 @@ class @DataSource
         viewModelIndex = (row * DATA_POINTS) + col
 
         # Create the view model for this grid point
-        viewModels[viewModelIndex] =
-          # Calculate the brightness of a grid point according to how far away it is from the data point
-          brightness: Math.min(1, Math.max(0, (DISPLAY_SPREAD - Math.abs(dataPoint - ROW_AMPLITUDES[row])) / DISPLAY_SPREAD))
+        @viewModels[viewModelIndex] ||= {}
+
+        # Calculate the brightness of a grid point according to how far away it is from the data point
+        @viewModels[viewModelIndex].brightness = Math.min(1, Math.max(0, (DISPLAY_SPREAD - Math.abs(dataPoint - ROW_AMPLITUDES[row])) / DISPLAY_SPREAD))
 
     # Return the data
-    viewModels
+    @viewModels
 
   constructor: (soundSource) ->
     # Instantiate an audio context
@@ -104,6 +104,9 @@ class @DataSource
 
     # If we're profiling, keep track of how many work packages have been completed
     @workPackages = 0 if PROFILE
+
+    # Keep a cache of reusable view models to cut down on object construction
+    @viewModels = []
 
   doWork: =>
     @workPackages++ if PROFILE
