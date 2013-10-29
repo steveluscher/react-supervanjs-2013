@@ -1,0 +1,8 @@
+{
+  "scripts": {
+    "watch": "./node_modules/jitter/bin/jitter coffee js -m"
+  },
+  "dependencies": {
+    "jitter": "*"
+  }
+}
