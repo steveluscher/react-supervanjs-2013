@@ -16,11 +16,11 @@ navigator.getUserMedia ||= navigator.webkitGetUserMedia or
 
 class @DataSource
   # How many samples should we analyze at once?
-  ANALYSIS_WINDOW_IN_SAMPLES = 2048
+  ANALYSIS_WINDOW_IN_SAMPLES = 256
 
   # How many samples should we use for each data point?
   # NOTE: Must be a whole number divisor of ANALYSIS_WINDOW_IN_SAMPLES
-  SAMPLES_PER_DATA_POINT = 32
+  SAMPLES_PER_DATA_POINT = 4
 
   # How many data points do we have, then?
   DATA_POINTS = ANALYSIS_WINDOW_IN_SAMPLES / SAMPLES_PER_DATA_POINT
