@@ -51,9 +51,21 @@ window.Perf = class
     Perf.timeEnd key
     out
 
-  @average: (key) -> arrayAverage results[key]
+  @iqrMean: (key) ->
+    # What are the results for this key?
+    resultsForKey = results[key]
+    return resultsForKey[0] if resultsForKey.length is 1
+    # What values are at the boundary of the interquartile range?
+    lowerBound = ss.quantile(resultsForKey, 0.25)
+    upperBound = ss.quantile(resultsForKey, 0.75)
+    # Throw out values outside the interquartile range
+    middleFifty = []
+    for result in resultsForKey
+      middleFifty.push(result) if lowerBound < result and upperBound > result
+    # Average the interquartile range
+    arrayAverage middleFifty
   @min: (key) -> arrayMin results[key]
   @max: (key) -> arrayMax results[key]
 
   @results: ->
-    ("#{key}: max: #{Perf.max(key).toFixed(2)}ms min: #{Perf.min(key).toFixed(2)}ms average: #{Perf.average(key).toFixed(2)}ms" for key of results).join("\n")
+    ("#{key}: max: #{Perf.max(key).toFixed(2)}ms min: #{Perf.min(key).toFixed(2)}ms interquartile mean: #{Perf.iqrMean(key).toFixed(2)}ms" for key of results).join("\n")
