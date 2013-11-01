@@ -36,5 +36,5 @@ dataSource.onData (data) ->
 # Make the data source work every frame
 workIt = ->
   dataSource.doWork()
-  setTimeout workIt, 0
+  setZeroTimeout workIt
 workIt()

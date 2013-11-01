@@ -22,8 +22,8 @@ visualizer = new VisualizerComponent { id: 'visualizer', dataSource: (dataSource
 # Render the visualizer
 React.renderComponent visualizer, document.body
 
-# Make the data source work every frame
+# Make the data source work as fast as possible
 workIt = ->
   dataSource.doWork()
-  setTimeout workIt, 0
+  setZeroTimeout workIt
 workIt()
