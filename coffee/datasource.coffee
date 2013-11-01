@@ -154,8 +154,8 @@ class @BoringDataSource extends @DataSource
     # …that produces a sine wave
     oscillator.type = oscillator.SINE
 
-    # …at 6Hz
-    oscillator.frequency.value = 16
+    # …at 120Hz
+    oscillator.frequency.value = 120
 
     # Start it immediately
     oscillator.noteOn(0)
