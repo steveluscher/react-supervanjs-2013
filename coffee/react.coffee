@@ -1,3 +1,8 @@
+# Given a data point, produce an object where the keys represent DOM element attributes
+dataPointToAttributes = (dataPoint) ->
+  style:
+    backgroundColor: "rgba(0,255,0,#{dataPoint.brightness})"
+
 # Create a React component for the visualizer
 VisualizerComponent = React.createClass
   getInitialState: -> { data: [] }
@@ -14,7 +19,7 @@ VisualizerComponent = React.createClass
 
   render: ->
     # Return data point elements, wrapped in a visualizer
-    React.DOM.div @props, (React.DOM.div { style: { backgroundColor: "rgba(0, 255, 0, #{dataPoint.brightness})" } }, dataPoint.brightness * 255 for dataPoint, i in @state.data)
+    React.DOM.div @props, (React.DOM.div dataPointToAttributes(dataPoint) for dataPoint in @state.data)
 
 # Create a visualizer
 visualizer = new VisualizerComponent { id: 'visualizer', dataSource: (dataSource = new FunDataSource) }
