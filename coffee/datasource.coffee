@@ -98,12 +98,6 @@ class @DataSource
     # Notify anyone interested in the data
     listener(data) for listener in @dataListeners
 
-  if PROFILE
-     # Force a redraw. Time it.
-      Perf.time 'redrawing'
-      document.body.offsetHeight
-      Perf.timeEnd 'redrawing'
-
   onData: (handler) -> (@dataListeners ||= []).push handler
 
 class @BoringDataSource extends @DataSource

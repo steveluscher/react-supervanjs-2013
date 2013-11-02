@@ -34,7 +34,9 @@ workIt = ->
 
   # Force a synchronous reflow, then schedule another work package.
   # NOTE: This is preferable to using requestAnimationFrame, because RAF fires at funny times.
+  Perf.time 'redrawing' if PROFILE
   forceReflow()
+  Perf.timeEnd 'redrawing' if PROFILE
 
   # Schedule that next work package
   setZeroTimeout workIt
