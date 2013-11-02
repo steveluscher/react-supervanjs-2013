@@ -33,8 +33,15 @@ dataSource.onData (data) ->
 
   Perf.timeEnd 'redrawing DOM'
 
-# Make the data source work every frame
+# Make the data source work as fast as possible
 workIt = ->
+  # Work!
   dataSource.doWork()
+
+  # Force a synchronous reflow, then schedule another work package.
+  # NOTE: This is preferable to using requestAnimationFrame, because RAF fires at funny times.
+  forceReflow()
+
+  # Schedule that next work package
   setZeroTimeout workIt
 workIt()
