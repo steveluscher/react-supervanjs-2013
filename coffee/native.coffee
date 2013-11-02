@@ -6,7 +6,7 @@ visualizerElementParent = visualizerElement.parentNode
 gridPointElementMother = document.createElement('div')
 
 # Get a datasource
-dataSource = new FunDataSource
+dataSource = new (getDataSource())
 
 # Attach a handler to that data source, to be called whenever new data is available
 dataSource.onData (data) ->

@@ -22,7 +22,7 @@ VisualizerComponent = React.createClass
     React.DOM.div @props, (React.DOM.div dataPointToAttributes(dataPoint) for dataPoint in @state.data)
 
 # Create a visualizer
-visualizer = new VisualizerComponent { id: 'visualizer', dataSource: (dataSource = new FunDataSource) }
+visualizer = new VisualizerComponent { id: 'visualizer', dataSource: (dataSource = new (getDataSource())) }
 
 # Render the visualizer
 React.renderComponent visualizer, document.body

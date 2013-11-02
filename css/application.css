@@ -9,15 +9,3 @@ html, body, #visualizer {
 body {
   background-color: rgba(0, 0, 0, 0.9);
 }
-#visualizer div {
-  width: calc(1/64 * 100%);
-  width: -webkit-calc(1/64 * 100%);
-
-  height: calc(1/64 * 100%);
-  height: -webkit-calc(1/64 * 100%);
-
-  float: left;
-}
-#visualizer div:nth-child(64n + 1) {
-  clear: left;
-}
