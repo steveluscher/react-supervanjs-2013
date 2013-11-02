@@ -1,6 +1,7 @@
 {
   "scripts": {
-    "watch": "./node_modules/jitter/bin/jitter coffee js -m"
+    "watch": "./node_modules/jitter/bin/jitter coffee js -m",
+    "start": "npm run-script watch & open index.html"
   },
   "dependencies": {
     "jitter": "*"
