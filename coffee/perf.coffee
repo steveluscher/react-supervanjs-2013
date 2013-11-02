@@ -1,3 +1,6 @@
+# Enable performance profiling?
+window.PROFILE = yes
+
 window.Perf = class
   startTimes = {}
   results = {}
