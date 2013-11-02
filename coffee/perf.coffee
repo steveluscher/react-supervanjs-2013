@@ -38,15 +38,12 @@ window.Perf = class
     (array) -> array.reduce(compare)
 
   @time: (key) ->
-    #console.time key
-    #debugger if key is 'setting state'
+    console.time key
     startTimes[key] = perfNow()
   @timeEnd: (key) ->
     throw 'timeEnd() called without preceding call to time()' unless startTime = startTimes[key]
     (results[key] ||= []).push perfNow() - startTime
-
-    #debugger if key is 'setting state'
-    #console.timeEnd key
+    console.timeEnd key
 
   @measure: (key, callback) ->
     Perf.time key
