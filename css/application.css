@@ -9,3 +9,8 @@ html, body, #visualizer {
 body {
   background-color: rgba(0, 0, 0, 0.9);
 }
+button.mark {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+}

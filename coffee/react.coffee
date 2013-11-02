@@ -24,20 +24,25 @@ VisualizerComponent = React.createClass
 # Create a visualizer
 visualizer = new VisualizerComponent { id: 'visualizer', dataSource: (dataSource = new (getDataSource())) }
 
-# Render the visualizer
-React.renderComponent visualizer, document.body
+# Create the marker button
+markerButton = React.DOM.button { className: 'mark', onClick: mark }, 'Mark'
 
-# Make the data source work as fast as possible
-workIt = ->
-  # Work!
-  dataSource.doWork()
+# Create the app
+app = React.DOM.body null, [visualizer, markerButton]
 
-  # Force a synchronous reflow, then schedule another work package.
-  # NOTE: This is preferable to using requestAnimationFrame, because RAF fires at funny times.
-  Perf.time 'redrawing' if PROFILE
-  forceReflow()
-  Perf.timeEnd 'redrawing' if PROFILE
+# Render the app
+React.renderComponent app, document.body, ->
+  # Make the data source work as fast as possible
+  workIt = ->
+    # Work!
+    dataSource.doWork()
 
-  # Schedule that next work package
-  setZeroTimeout workIt
-workIt()
+    # Force a synchronous reflow, then schedule another work package.
+    # NOTE: This is preferable to using requestAnimationFrame, because RAF fires at funny times.
+    Perf.time 'redrawing' if PROFILE
+    forceReflow()
+    Perf.timeEnd 'redrawing' if PROFILE
+
+    # Schedule that next work package
+    setZeroTimeout workIt
+  workIt()
