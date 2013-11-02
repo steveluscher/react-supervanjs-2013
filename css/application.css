@@ -14,3 +14,10 @@ button.mark {
   bottom: 10px;
   right: 10px;
 }
+#visualizer div:hover {
+  box-shadow:
+    white 1px 1px 0,
+    white 1px -1px 0,
+    white -1px 1px 0,
+    white -1px -1px 0;
+}
