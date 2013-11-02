@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="visualizerDemo">
+<head>
+  <meta charset="utf-8">
+  <title>Angular demo</title>
+
+  <link rel="stylesheet" href="css/application.css" type="text/css" media="screen" charset="utf-8">
+</head>
+
+<body>
+
+  <visualizer id="visualizer">
+    <div ng-repeat="dataPoint in data" ng-style="styleFromDataPoint(dataPoint)">
+  </visualizer>
+
+  <button class="mark" onclick="mark()">Mark</button>
+
+  <script src="js/utils.js" type="text/javascript" charset="utf-8"></script>
+  <script src="js/configurator.js" type="text/javascript" charset="utf-8"></script>
+  <script src="js/marker.js" type="text/javascript" charset="utf-8"></script>
+  <script src="lib/js/simple_statistics.js" type="text/javascript" charset="utf-8"></script>
+  <script src="js/perf.js" type="text/javascript" charset="utf-8"></script>
+  <script src="js/datasource.js" type="text/javascript" charset="utf-8"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0-rc.3/angular.js" type="text/javascript"></script>
+  <script src="js/angular.js" type="text/javascript" charset="utf-8"></script>
+
+</body>
+
+</html>
