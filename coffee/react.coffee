@@ -1,25 +1,20 @@
-# Given a data point, produce an object where the keys represent DOM element attributes
-dataPointToAttributes = (dataPoint) ->
-  style:
-    backgroundColor: "rgba(0,255,0,#{dataPoint.brightness})"
+DataPoint = React.createClass
+  shouldComponentUpdate: (prevProps) -> prevProps.dataPoint.brightness != @props.dataPoint.brightness
+  render: ->
+    React.DOM.div (style: (backgroundColor: "rgba(0,255,0,#{@props.dataPoint.brightness})"))
 
 # Create a React component for the visualizer
 VisualizerComponent = React.createClass
   getInitialState: -> { data: [] }
 
   componentDidMount: ->
-    # Instantiate a data source
-    @dataSource = @props.dataSource or new BoringDataSource
-
     # Attach a handler to that data source, to be called whenever new data is available
-    @dataSource.onData (data) =>
-      Perf.time 'setting state' if PROFILE
-      @replaceState { data: data }
-      Perf.timeEnd 'setting state' if PROFILE
+    @props.dataSource.onData (data) =>
+      @setState { data: data }
 
   render: ->
     # Return data point elements, wrapped in a visualizer
-    React.DOM.div @props, (React.DOM.div dataPointToAttributes(dataPoint) for dataPoint in @state.data)
+    React.DOM.div @props, ((DataPoint (dataPoint: dataPoint)) for dataPoint in @state.data)
 
 # Create a visualizer
 visualizer = new VisualizerComponent { id: 'visualizer', dataSource: (dataSource = new (getDataSource())) }
@@ -32,17 +27,5 @@ app = React.DOM.body null, [visualizer, markerButton]
 
 # Render the app
 React.renderComponent app, document.body, ->
-  # Make the data source work as fast as possible
-  workIt = ->
-    # Work!
-    dataSource.doWork()
+  setInterval dataSource.doWork.bind(dataSource), 0
 
-    # Force a synchronous reflow, then schedule another work package.
-    # NOTE: This is preferable to using requestAnimationFrame, because RAF fires at funny times.
-    Perf.time 'redrawing' if PROFILE
-    forceReflow()
-    Perf.timeEnd 'redrawing' if PROFILE
-
-    # Schedule that next work package
-    setZeroTimeout workIt
-  workIt()
