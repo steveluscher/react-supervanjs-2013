@@ -55,7 +55,7 @@ class @DataSource
         viewModelIndex = (row * DATA_POINTS) + col
 
         # Create the view model for this grid point
-        @viewModels[viewModelIndex] ||= {}
+        @viewModels[viewModelIndex] = {}
 
         # Calculate the brightness of a grid point according to how far away it is from the data point
         @viewModels[viewModelIndex].brightness = Math.min(1, Math.max(0, (DISPLAY_SPREAD - Math.abs(dataPoint - ROW_AMPLITUDES[row])) / DISPLAY_SPREAD))

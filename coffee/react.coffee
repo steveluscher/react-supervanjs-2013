@@ -1,4 +1,5 @@
 DataPoint = React.createClass
+  shouldComponentUpdate: (prevProps) -> prevProps.dataPoint.brightness != @props.dataPoint.brightness
   render: ->
     React.DOM.div (style: (backgroundColor: "rgba(0,255,0,#{@props.dataPoint.brightness})"))
 
