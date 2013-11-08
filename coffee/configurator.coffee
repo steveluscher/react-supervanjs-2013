@@ -2,7 +2,7 @@ DEFAULT_GRID_SIZE = 128
 DEFAULT_DATA_SOURCE_TYPE = 'Boring'
 
 # Configure the app by passing the querystring "?{data-source-type}-{grid-size}"
-[dataSourceType, gridSize] = window.location.search.replace(/^\?/, '').split('-')
+[dataSourceType, gridSize, enableProfile] = window.location.search.replace(/^\?/, '').split('-')
 
 # Apply defaults
 gridSize ||= DEFAULT_GRID_SIZE
@@ -13,6 +13,7 @@ window.getDataSource = ->
   return unless className = dataSourceType?.toLowerCase()
   window["#{className.charAt(0).toUpperCase()}#{className.slice(1)}DataSource"]
 window.getGridSize = -> gridSize
+window.getProfileSetting = -> enableProfile is 'profile'
 
 # Generate some CSS, dynamically, depending on how large the grid is
 css = """

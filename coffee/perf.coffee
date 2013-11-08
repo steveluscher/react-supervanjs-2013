@@ -1,5 +1,5 @@
 # Enable performance profiling?
-window.PROFILE = yes
+window.PROFILE = window.getProfileSetting()
 
 window.Perf = class
   startTimes = {}
