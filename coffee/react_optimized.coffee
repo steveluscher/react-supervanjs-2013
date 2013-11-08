@@ -1,8 +1,8 @@
 # Create a React component for each data point in the visualization
 DataPoint = React.createClass
-  shouldComponentUpdate: (prevProps) ->
+  shouldComponentUpdate: (nextProps) ->
     # If the brightness hasn't changed since last time, return false, blocking a needless update
-    prevProps.brightness isnt @props.brightness
+    @props.brightness isnt nextProps.brightness
 
   render: ->
     # Render a simple div with a background color
