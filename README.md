@@ -1,5 +1,7 @@
 # Building user interfaces with Facebook's React: What's the DIFF?
-_A conference talk from Super VanJS 2013_
+_A conference talk from Super VanJS 2013 ([video link](http://www.youtube.com/watch?v=1OeXsL5mr4g&list=SPuE9Gq9Mxr5kCvVa7tcwW1S2-FEym5fbt&index=1))_
+
+[![Steven Luscher’s React talk at Super VanJS 2013](http://img.youtube.com/vi/1OeXsL5mr4g/0.jpg)](http://www.youtube.com/watch?v=1OeXsL5mr4g&list=SPuE9Gq9Mxr5kCvVa7tcwW1S2-FEym5fbt&index=1)
 
 ## Demos
 
