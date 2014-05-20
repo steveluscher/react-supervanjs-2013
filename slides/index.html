@@ -129,7 +129,7 @@
             <pre class="fragment"><code class="javascript" data-trim>
 render: function() {
   // Return a Javascript representation of a DOM element.
-  return React.DOM.tagName(domAttributesObj, childrenOrTextContent);
+  return React.DOM.tagName(propsObj, renderableOrRenderables);
 }
             </code></pre>
           </section>
@@ -174,10 +174,10 @@ render: function() {
           <section>
             <pre class="fragment"><code class="javascript" data-trim>
 // Before rendering
-componentWillMount: function(/* DOMElement */ rootNode) { ... }
+componentWillMount: function() { ... }
 
 // After rendering
-componentDidMount: function(/* DOMElement */ rootNode) { ... }
+componentDidMount: function() { ... }
 
 // Just before removal
 componentWillUnmount: function() { ... }
@@ -205,8 +205,7 @@ componentWillUpdate: function(/* object */ nextProps,
 // After rendering.
 // Not called on first render.
 componentDidUpdate: function(/* object */ prevProps,
-                             /* object */ prevState,
-                             /* DOMElement */ rootNode) { ... }
+                             /* object */ prevState) { ... }
             </code></pre>
           </section>
 
@@ -229,7 +228,7 @@ getDefaultProps: function() {
   return { turnLimit: 30 };
 }
 
-// Calculate what the initial state should be. Can use the initial props.
+// Calculate and return what the initial state should be.
 getInitialState: function() {
   return { turnsRemaining: this.props.turnLimit };
 }
