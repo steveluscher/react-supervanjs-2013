@@ -6,7 +6,7 @@
   "subdomain": "revealjs",
   "scripts": {
     "test": "grunt test",
-    "start": ""
+    "start": "python -m SimpleHTTPServer & open http://0.0.0.0:8000/"
   },
   "author": {
     "name": "Hakim El Hattab",

@@ -17,6 +17,6 @@ Requires Chrome.
 
 To view the slides, open `slides/index.html` in a browser. Press spacebar to advance; you'll miss some slides if you use the right arrow key.
 
-The two slides at the end won't work if the presentation is running under the `file://` schema. Use your favorite webserver (eg. [Pow](http://pow.cx)) to mount the presentation at `https://`
+The two slides at the end won't work if the presentation is running under the `file://` schema. If Python is available on your system, simply run `npm start` from the `slides` directory to start a lightweight webserver. Alternatively, use your own favorite webserver (eg. [Pow](http://pow.cx)) to mount the presentation at `https://`
 
 Requires Chrome.
