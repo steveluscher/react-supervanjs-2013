@@ -7,7 +7,7 @@ _A conference talk from Super VanJS 2013 ([video link](http://www.youtube.com/wa
 
 To run the demos, clone this repo, and then:
 
-1. `cd demos`
+1. `cd demo`
 2. `npm install`
 3. `npm start`
 
